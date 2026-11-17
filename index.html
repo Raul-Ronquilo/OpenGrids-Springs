@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenGrid Springs — Know the numbers before you decide.</title>
+  <meta name="description" content="Verified, transparent information about Colorado Springs data centers' energy and water use.">
+  <meta name="theme-color" content="#1F3A5F">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3A5F'/%3E%3Cpolyline points='6,46 14,40 20,43 28,30 33,34 40,16 47,28 52,25 58,46' fill='none' stroke='%23E9A23B' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M50 6c4 6 6 9 6 12a6 6 0 0 1-12 0c0-3 2-6 6-12z' fill='%232A8C82' stroke='%23F5F7F9' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Reusable SVG symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" fill="currentColor"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.5c4 5.2 6.5 8.9 6.5 12a6.5 6.5 0 0 1-13 0c0-3.1 2.5-6.8 6.5-12z" fill="currentColor"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M12 4a9 9 0 0 0-9 9 9 9 0 0 0 2 5.7h14A9 9 0 0 0 21 13a9 9 0 0 0-9-9zm0 2a7 7 0 0 1 6.9 8H16a4 4 0 0 0-1.2-2.8l2.1-3.3-1.7-1-2.1 3.2A4 4 0 0 0 8 14H5.1A7 7 0 0 1 12 6z" fill="currentColor"/></symbol>
+      <symbol id="i-fan" viewBox="0 0 24 24"><path d="M12 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM11 3c3 0 4 2.5 3 5l-1 2h-2C9 8 8.5 3 11 3zm10 8c0 3-2.5 4-5 3l-2-1v-2c2-2 7-2.5 7 0zM13 21c-3 0-4-2.5-3-5l1-2h2c2 2 2.5 7 0 7zM3 13c0-3 2.5-4 5-3l2 1v2c-2 2-7 2.5-7 0z" fill="currentColor"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.7-4.7 1.4 1.4-6.1 6.1z" fill="currentColor"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3zM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="currentColor"/></symbol>
+      <symbol id="logo-mark" viewBox="0 0 120 64">
+        <!-- Baseline axis -->
+        <line x1="4" y1="56" x2="100" y2="56" stroke="currentColor" stroke-width="2" opacity=".35" stroke-linecap="round"/>
+        <!-- Skyline / power graph: one continuous line -->
+        <polyline points="4,50 14,44 22,47 32,34 39,38 48,26 54,30 64,8 73,22 80,19 88,32 94,30 100,50"
+          fill="none" stroke="#E9A23B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="64" cy="8" r="3" fill="#E9A23B"/>
+        <!-- Water drop -->
+        <path d="M111 30c4.5 6 7 9.6 7 12.8a7 7 0 0 1-14 0c0-3.2 2.5-6.8 7-12.8z" fill="#2A8C82"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#home" class="brand" aria-label="OpenGrid Springs home">
+        <svg class="brand-mark" viewBox="0 0 120 64" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand-word">OpenGrid <span>Springs</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#why" data-nav="why">Why It Matters</a></li>
+          <li><a href="#dashboard" data-nav="dashboard">Dashboard</a></li>
+          <li><a href="#ordinance" data-nav="ordinance">The Ordinance</a></li>
+          <li><a href="#events" data-nav="events">Events</a></li>
+          <li><a href="#action" data-nav="action" class="nav-cta">Take Action</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ============ HOME ============ -->
+    <section class="page" id="page-home" data-page="home" aria-labelledby="home-h">
+      <div class="hero">
+        <div class="wrap hero-inner">
+          <p class="eyebrow">Colorado Springs, CO · Data center transparency</p>
+          <h1 id="home-h">You can't make a good decision about a data center if nobody can check its numbers.</h1>
+          <p class="hero-lede">OpenGrid Springs gives Colorado Springs residents accurate, verified information about local data centers' energy and water use, so the community can make informed decisions when new data centers are proposed.</p>
+          <div class="btn-row">
+            <a href="#dashboard" class="btn btn-primary">See the dashboard</a>
+            <a href="#action" class="btn btn-ghost">Take action</a>
+          </div>
+          <p class="tagline">Know the numbers before you decide.</p>
+        </div>
+        <svg class="hero-ridge" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+          <polyline points="0,130 120,110 200,118 330,80 400,92 520,60 590,72 720,18 820,52 880,44 980,78 1050,70 1180,104 1300,96 1440,124"
+            fill="none" stroke="#E9A23B" stroke-width="3" stroke-linejoin="round" opacity=".9"/>
+          <path d="M0,130 120,110 200,118 330,80 400,92 520,60 590,72 720,18 820,52 880,44 980,78 1050,70 1180,104 1300,96 1440,124 V160 H0z" fill="#F5F7F9"/>
+        </svg>
+      </div>
+
+      <div class="wrap section">
+        <h2 class="section-title">The plan in four steps</h2>
+        <ol class="steps">
+          <li class="step-card">
+            <span class="step-num">1</span>
+            <h3>Report</h3>
+            <p>Every quarter, data centers publish their <strong class="c-power">power</strong> and <strong class="c-water">water</strong> use.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">2</span>
+            <h3>Audit</h3>
+            <p>An independent third party checks the numbers against utility meter data.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">3</span>
+            <h3>Publish</h3>
+            <p>Verified numbers go on a public city dashboard anyone can read.</p>
+          </li>
+          <li class="step-card step-enforce">
+            <span class="step-num">4</span>
+            <h3>Enforce</h3>
+            <p>Fines for late, missing or inaccurate reports keep the numbers honest.</p>
+          </li>
+        </ol>
+
+        <aside class="callout callout-date" aria-label="Upcoming decision">
+          <div class="callout-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm-2 7h14v11H5V9z" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <p class="callout-kicker">Coming up</p>
+            <p class="callout-text">Colorado Springs City Council decides on <strong>Project Taurus</strong>, a proposed 50 MW AI data center, in <strong>April 2027</strong>.
+              <a class="src" href="https://www.axios.com/local/colorado-springs/2026/09/18/data-center-project-taurus-vote-delay" target="_blank" rel="noopener">Source: Axios</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ WHY ============ -->
+    <section class="page" id="page-why" data-page="why" aria-labelledby="why-h" hidden>
+      <div class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Why it matters</p>
+          <h1 id="why-h">Both sides have a point. Neither side has checked numbers.</h1>
+        </div>
+      </div>
+
+      <div class="wrap section">
+        <div class="two-col">
+          <div class="col-card col-offer">
+            <h2>What data centers offer</h2>
+            <ul class="ticks">
+              <li>40–100 permanent jobs claimed for Project Taurus.</li>
+              <li>Raeden says more than $3M a year in tax revenue.</li>
+              <li>Construction jobs and grid upgrades.</li>
+              <li>The internet, cloud and AI services everyone uses.</li>
+              <li>Colorado Springs Utilities has a dedicated large-load rate for 10 MW+ customers, designed so they cover their own costs.</li>
+            </ul>
+          </div>
+          <div class="col-card col-worry">
+            <h2>What residents worry about</h2>
+            <ul class="ticks">
+              <li>Electricity demand: a 50 MW center would be the utility's largest customer.</li>
+              <li>Water use in a drought-prone region.</li>
+              <li>Higher utility bills.</li>
+              <li>Noise, heat and backup generators.</li>
+              <li>Claims that nobody independently verifies.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="pull">Every claim on both sides is either a company promise or a resident fear. Our ordinance turns both into checked numbers.</p>
+      </div>
+
+      <div class="band">
+        <div class="wrap section">
+          <h2 class="section-title">The power-versus-water tradeoff</h2>
+          <p class="lede">Cooling is where power and water trade off. Saving one usually costs the other.</p>
+          <div class="tradeoff">
+            <div class="trade-card">
+              <h3>Evaporative (water) cooling</h3>
+              <div class="meter-row"><span class="meter-label c-power"><svg class="ic"><use href="#i-bolt"/></svg>Power</span><span class="meter"><span class="fill fill-power" style="--w:35%"></span></span><span class="meter-val">Lower</span></div>
+              <div class="meter-row"><span class="meter-label c-water"><svg class="ic"><use href="#i-drop"/></svg>Water</span><span class="meter"><span class="fill fill-water" style="--w:85%"></span></span><span class="meter-val">Higher</span></div>
+              <p>Spraying or evaporating water carries heat away cheaply, so the building uses less electricity, but it consumes water.</p>
+            </div>
+            <div class="trade-vs" aria-hidden="true">⇄</div>
+            <div class="trade-card">
+              <h3>Air or closed-loop cooling</h3>
+              <div class="meter-row"><span class="meter-label c-power"><svg class="ic"><use href="#i-bolt"/></svg>Power</span><span class="meter"><span class="fill fill-power" style="--w:75%"></span></span><span class="meter-val">Higher</span></div>
+              <div class="meter-row"><span class="meter-label c-water"><svg class="ic"><use href="#i-drop"/></svg>Water</span><span class="meter"><span class="fill fill-water" style="--w:12%"></span></span><span class="meter-val">Lower</span></div>
+              <p>Fans, chillers and sealed loops save water, but they need more electricity to move the heat.</p>
+            </div>
+          </div>
+          <p class="pull pull-small">A good PUE can hide a bad WUE, so we need both.</p>
+        </div>
+      </div>
+
+      <div class="wrap section">
+        <div class="why-grid">
+          <div>
+            <h2 class="section-title">Plain-English glossary</h2>
+            <div class="glossary">
+              <details>
+                <summary><span class="c-power">PUE</span> · Power Usage Effectiveness</summary>
+                <p>Total facility energy divided by the energy used by the computers. 1.0 is perfect; 1.3 means 30% overhead for cooling, lighting and other systems.</p>
+              </details>
+              <details>
+                <summary><span class="c-water">WUE</span> · Water Usage Effectiveness</summary>
+                <p>Liters of water used per kilowatt-hour (kWh) of computer energy. Lower is better.</p>
+              </details>
+              <details>
+                <summary><span class="c-power">MW</span> · Megawatt</summary>
+                <p>A measure of power at a moment in time. 1 MW powers about 600–1,000 homes.</p>
+              </details>
+              <details>
+                <summary><span class="c-power">MWh</span> · Megawatt-hour</summary>
+                <p>A measure of energy over time: 1 MW running for one hour. Your power bill counts kWh; 1 MWh is 1,000 kWh.</p>
+              </details>
+              <details>
+                <summary><span class="c-water">Acre-foot</span></summary>
+                <p>The water needed to cover one acre one foot deep: about 326,000 gallons. Western water rights are often counted this way.</p>
+              </details>
+              <details>
+                <summary>Third-party audit</summary>
+                <p>A check by an independent, certified reviewer who is not paid by the company to agree with it. They compare reported numbers to meter data and records.</p>
+              </details>
+            </div>
+          </div>
+          <div>
+            <h2 class="section-title">Context</h2>
+            <div class="stat-stack">
+              <div class="stat stat-water">
+                <svg class="stat-ic" aria-hidden="true"><use href="#i-drop"/></svg>
+                <p class="stat-num">5 million <span>gallons/day</span></p>
+                <p>Large data centers can use up to 5 million gallons of water a day.</p>
+                <a class="src" href="https://www.coloradopolitics.com/2026/10/30/autonomous-mind-data-center-fight-heads-back-to-colorado-capitol/" target="_blank" rel="noopener">Source: Colorado Politics</a>
+              </div>
+              <div class="stat stat-power">
+                <svg class="stat-ic" aria-hidden="true"><use href="#i-bolt"/></svg>
+                <p class="stat-num">4.4% <span>of US electricity</span></p>
+                <p>Data centers used 4.4% of US electricity in 2023, a share that could triple by 2028.</p>
+                <a class="src" href="https://www.westword.com/?p=40921701" target="_blank" rel="noopener">Source: Westword</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DASHBOARD ============ -->
+    <section class="page" id="page-dashboard" data-page="dashboard" aria-labelledby="dash-h" hidden>
+      <div class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Dashboard prototype</p>
+          <h1 id="dash-h">Colorado Springs data centers</h1>
+          <p class="lede">Flip the switch to compare what the ordinance would make public with what's reported today.</p>
+        </div>
+      </div>
+
+      <div class="wrap section dash" id="dash" data-mode="example">
+        <div class="mode-switch" role="radiogroup" aria-label="Data shown">
+          <button role="radio" aria-checked="true" data-mode="example" class="mode-btn">
+            <span class="mode-small">Example data</span>
+            <span class="mode-big">What reporting would look like</span>
+          </button>
+          <button role="radio" aria-checked="false" data-mode="real" class="mode-btn">
+            <span class="mode-small">Real data</span>
+            <span class="mode-big">What's reported today</span>
+          </button>
+          <span class="mode-thumb" aria-hidden="true"></span>
+        </div>
+
+        <div class="banner banner-example" data-show="example">
+          <strong>EXAMPLE DATA.</strong> These numbers are made up to show what the ordinance would make public.
+        </div>
+        <div class="banner banner-real" data-show="real">
+          This is everything publicly available today. None of it is independently audited.
+        </div>
+
+        <div class="summary" aria-live="polite">
+          <div class="summary-count" data-show="real">
+            <span class="big-zero" id="zeroCount">0</span>
+            <span>of 8 facilities publish audited power or water data.</span>
+          </div>
+          <div class="summary-totals" data-show="example" id="exampleTotals"></div>
+        </div>
+
+        <div class="controls">
+          <div class="seg" role="group" aria-label="Filter by size">
+            <button class="seg-btn" aria-pressed="true" data-filter="All">All</button>
+            <button class="seg-btn" aria-pressed="false" data-filter="Large">Large <span class="hide-xs">10+ MW</span></button>
+            <button class="seg-btn" aria-pressed="false" data-filter="Small">Small <span class="hide-xs">1–10 MW</span></button>
+          </div>
+          <label class="sort">
+            <span>Sort</span>
+            <select id="sortSel">
+              <option value="default">Default order</option>
+              <option value="power">Power (high → low)</option>
+              <option value="water">Water (high → low)</option>
+            </select>
+          </label>
+        </div>
+        <p class="sort-note" id="sortNote" data-show="real" hidden>Sorting has nothing to sort by: no facility reports power or water.</p>
+
+        <div class="cards" id="cards"></div>
+
+        <p class="dash-note">Directories list between 6 and 13 data centers in Colorado Springs depending on how campuses are counted.</p>
+        <p class="dash-note">Example math: quarterly MWh = avg MW × 2,190 hours · IT kWh = MWh × 1,000 ÷ PUE · water = IT kWh × WUE (liters) ÷ 3.785 · homes ≈ avg MW × 800.</p>
+      </div>
+    </section>
+
+    <!-- ============ ORDINANCE ============ -->
+    <section class="page" id="page-ordinance" data-page="ordinance" aria-labelledby="ord-h" hidden>
+      <div class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Proposed Colorado Springs ordinance</p>
+          <h1 id="ord-h">The Data Center Resource Act</h1>
+          <p class="lede">Working name. Report quarterly, audit yearly, publish everything that matters, and fine what's late or wrong.</p>
+        </div>
+      </div>
+
+      <div class="wrap section">
+        <div class="ord-grid">
+          <article class="ord-card">
+            <h2>Who's covered</h2>
+            <p>Data centers drawing <strong>1 MW or more</strong>.</p>
+            <ul class="tier-list">
+              <li><span class="tier-tag">Small</span> 1–10 MW</li>
+              <li><span class="tier-tag tier-large">Large</span> 10 MW+, matching Colorado Springs Utilities' large-load rate line</li>
+            </ul>
+          </article>
+          <article class="ord-card">
+            <h2>Reported every quarter</h2>
+            <ul class="ticks">
+              <li><span class="c-power">Total electricity (MWh)</span> and renewable share</li>
+              <li><span class="c-power">Peak demand (MW)</span></li>
+              <li><span class="c-water">Total water (gallons)</span> and source: city, well or reclaimed</li>
+              <li><span class="c-power">PUE</span> and <span class="c-water">WUE</span></li>
+              <li>Cooling method</li>
+            </ul>
+          </article>
+          <article class="ord-card">
+            <h2>Audits</h2>
+            <p>An independent, city-certified auditor checks each facility once a year against utility meter data.</p>
+            <p>Operators pay an annual audit fee, and all fines go into the audit fund. Reports more than <strong>10% off</strong> the audited numbers count as inaccurate.</p>
+          </article>
+          <article class="ord-card">
+            <h2>Public</h2>
+            <p>A city-run dashboard, updated quarterly. <a href="#dashboard">This site is the prototype.</a></p>
+            <p>Trade secrets like customer names stay private. Total power and water use never do.</p>
+          </article>
+        </div>
+
+        <h2 class="section-title">Fines</h2>
+        <div class="table-wrap">
+          <table class="fines">
+            <caption class="sr-only">Fines by violation and facility size</caption>
+            <thead><tr><th scope="col">Violation</th><th scope="col">Small (1–10 MW)</th><th scope="col">Large (10+ MW)</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Late or missing quarterly report</th><td>$250/day, max $25,000/yr</td><td>$1,000/day, max $100,000/yr</td></tr>
+              <tr><th scope="row">Audit finds numbers off by more than 10%</th><td>$10,000 + re-audit at operator's cost</td><td>$50,000 + re-audit at operator's cost</td></tr>
+              <tr><th scope="row">Knowingly false report</th><td>up to $50,000</td><td>up to $100,000</td></tr>
+              <tr><th scope="row">Repeat violation within 3 years</th><td>fine doubles</td><td>fine doubles</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ord-split">
+          <div class="calc" id="calc">
+            <h2>Fine calculator</h2>
+            <form id="calcForm" novalidate>
+              <fieldset class="calc-tier">
+                <legend>Facility size</legend>
+                <label><input type="radio" name="tier" value="Small" checked> Small (1–10 MW)</label>
+                <label><input type="radio" name="tier" value="Large"> Large (10+ MW)</label>
+              </fieldset>
+              <label class="field">
+                <span>Violation</span>
+                <select name="violation" id="calcViolation">
+                  <option value="late">Late or missing quarterly report</option>
+                  <option value="off">Audit finds numbers off by more than 10%</option>
+                  <option value="false">Knowingly false report</option>
+                </select>
+              </label>
+              <label class="field" id="daysField">
+                <span>Days late (this year)</span>
+                <input type="number" name="days" id="calcDays" min="0" max="365" value="30" inputmode="numeric">
+              </label>
+              <label class="check"><input type="checkbox" name="repeat" id="calcRepeat"> Repeat violation within 3 years (fine doubles)</label>
+            </form>
+            <output class="calc-out" for="calcForm" id="calcOut" aria-live="polite"></output>
+          </div>
+
+          <aside class="callout callout-fair">
+            <h2>Why it's fair</h2>
+            <p>A 50 MW center uses about <strong class="c-power">438,000 MWh a year</strong>. At an assumed ~$70/MWh, that's roughly <strong>$30M in electricity</strong> <span class="est">(estimate)</span>.</p>
+            <p>The <strong>$100,000</strong> cap is about <strong>0.3%</strong> of that bill. Reporting is cheaper than not reporting.</p>
+            <div class="fair-bar" aria-hidden="true"><span class="fair-fill"></span></div>
+            <p class="fair-cap">Thin sliver = max yearly late-report fine vs. a year of power.</p>
+          </aside>
+        </div>
+
+        <h2 class="section-title">Laws we modeled on</h2>
+        <div class="table-wrap">
+          <table class="models">
+            <thead><tr><th scope="col">Law</th><th scope="col">Penalty</th><th scope="col">Source</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">NYC Local Law 84</th><td>$500 per quarter, up to $2,000/yr</td><td><a class="src" href="https://home4.nyc.gov/site/buildings/codes/ll84-benchmarking-violations.page" target="_blank" rel="noopener">NYC Buildings</a></td></tr>
+              <tr><th scope="row">Energize Denver</th><td>$2,000/yr for not reporting; $10/sq ft if a building never reports</td><td><a class="src" href="https://envigilance.com/blog/energize-denver-penalties/" target="_blank" rel="noopener">Envigilance</a></td></tr>
+              <tr><th scope="row">Utah HB 76 (2026, data center water)</th><td>up to $100/day</td><td><a class="src" href="https://policyrisk.com/state-bill/UT-HB76-2026GS" target="_blank" rel="noopener">PolicyRisk</a></td></tr>
+              <tr><th scope="row">Germany's Energy Efficiency Act</th><td>up to €100,000 for PUE violations</td><td><a class="src" href="https://ecorpit.com/germany-data-centre-renewable-energy-rule-2027/" target="_blank" rel="noopener">eCorpIT</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section class="page" id="page-events" data-page="events" aria-labelledby="ev-h" hidden>
+      <div class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Get informed together</p>
+          <h1 id="ev-h">Events</h1>
+          <p class="lede"><span class="label-example">Example events</span> Dates and venues are placeholders for this class prototype.</p>
+        </div>
+      </div>
+      <div class="wrap section">
+        <div class="events" id="eventList"></div>
+      </div>
+    </section>
+
+    <!-- ============ ACTION ============ -->
+    <section class="page" id="page-action" data-page="action" aria-labelledby="act-h" hidden>
+      <div class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Take action</p>
+          <h1 id="act-h">Help Colorado Springs see the numbers.</h1>
+        </div>
+      </div>
+
+      <div class="wrap section">
+        <ol class="helps">
+          <li><span class="helps-n">1</span><div><h3>Learn</h3><p>Read the dashboard and glossary.</p></div></li>
+          <li><span class="helps-n">2</span><div><h3>Show up</h3><p>Come to an event or town hall.</p></div></li>
+          <li><span class="helps-n">3</span><div><h3>Speak up</h3><p>Tell City Council you want verified numbers.</p></div></li>
+        </ol>
+
+        <div class="action-grid">
+          <div class="panel">
+            <h2>Stay informed</h2>
+            <form class="demo-form" id="signupForm">
+              <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+              <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+              <label class="field"><span>ZIP code</span><input type="text" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required></label>
+              <label class="check"><input type="checkbox" name="updates" checked> Email updates</label>
+              <label class="check"><input type="checkbox" name="volunteer"> Volunteer at events</label>
+              <button class="btn btn-primary" type="submit">Sign up</button>
+              <p class="form-msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h2>Contact City Council</h2>
+            <p>Copy this message, make it your own, and send it through the city's website.</p>
+            <label class="field">
+              <span class="sr-only">Message to City Council</span>
+              <textarea id="councilMsg" rows="9" readonly>Dear Colorado Springs City Council members,
+
+As a resident, I'd like our community to make informed decisions about data centers, including Project Taurus. Please consider an ordinance requiring data centers to publicly report quarterly power use, water use, PUE and WUE, verified by an independent third-party auditor.
+
+Verified numbers help everyone: residents, utilities and the companies themselves.
+
+Thank you for your time and service,
+[Your name], [Your ZIP]</textarea>
+            </label>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="copyMsg" type="button">Copy message</button>
+              <a class="btn btn-ghost" href="https://coloradosprings.gov" target="_blank" rel="noopener">Go to coloradosprings.gov</a>
+            </div>
+            <p class="form-msg" id="copyStatus" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="panel">
+            <h2>Share</h2>
+            <p>Send the site to a neighbor. Each button copies the link.</p>
+            <div class="share-row">
+              <button class="btn btn-ghost share-btn" type="button" data-share="">Copy site link</button>
+              <button class="btn btn-ghost share-btn" type="button" data-share="#dashboard">Copy dashboard link</button>
+            </div>
+            <p class="form-msg" id="shareStatus" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ADS (hidden page) ============ -->
+    <section class="page" id="page-ads" data-page="ads" aria-labelledby="ads-h" hidden>
+      <div class="page-head page-head-ads">
+        <div class="wrap">
+          <p class="eyebrow">Outreach concepts</p>
+          <h1 id="ads-h">Ad mockups</h1>
+          <p class="lede">Generic concept mockups for presentation. Not real platforms.</p>
+        </div>
+      </div>
+      <div class="wrap section ads">
+        <figure class="phone-wrap">
+          <figcaption class="mock-label">Concept mockup: social media ad</figcaption>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-bar" aria-hidden="true"><span>9:41</span><span>Feed</span><span>●●●</span></div>
+            <div class="feed-ghost" aria-hidden="true"></div>
+            <article class="post">
+              <header class="post-head">
+                <svg class="post-av" viewBox="0 0 120 64" aria-hidden="true"><use href="#logo-mark"/></svg>
+                <div><strong>OpenGrid Springs</strong><span>Sponsored · Colorado Springs</span></div>
+              </header>
+              <div class="ad-visual" aria-hidden="true">
+                <svg viewBox="0 0 320 170">
+                  <rect width="320" height="170" fill="#1F3A5F"/>
+                  <polyline points="0,140 40,120 70,128 110,90 135,100 170,62 192,72 225,22 255,58 275,50 300,88 320,96" fill="none" stroke="#E9A23B" stroke-width="4" stroke-linejoin="round"/>
+                  <path d="M285 112c7 9.5 11 15 11 20a11 11 0 0 1-22 0c0-5 4-10.5 11-20z" fill="#2A8C82"/>
+                  <text x="20" y="40" fill="#F5F7F9" font-family="Barlow Semi Condensed, sans-serif" font-weight="700" font-size="26">? MWh</text>
+                  <text x="20" y="70" fill="#9FD6CF" font-family="Barlow Semi Condensed, sans-serif" font-weight="700" font-size="26">? gallons</text>
+                </svg>
+              </div>
+              <div class="post-body">
+                <h2 class="ad-head">How much power and water do Colorado Springs data centers use?</h2>
+                <p>Nobody can say for sure. See what's reported and what isn't.</p>
+              </div>
+              <div class="post-cta">
+                <span>OpenGrid Springs</span>
+                <a href="#home" class="btn btn-primary btn-sm ad-click">Learn more</a>
+              </div>
+            </article>
+            <div class="feed-ghost short" aria-hidden="true"></div>
+          </div>
+        </figure>
+
+        <figure class="phone-wrap">
+          <figcaption class="mock-label">Concept mockup: neighborhood app post</figcaption>
+          <div class="phone phone-neigh">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-bar" aria-hidden="true"><span>9:41</span><span>Neighborhood</span><span>●●●</span></div>
+            <article class="post post-neigh">
+              <header class="post-head">
+                <span class="post-av post-av-initials" aria-hidden="true">JR</span>
+                <div><strong>Jordan R.</strong><span>Old North End · 2h</span></div>
+              </header>
+              <div class="post-body">
+                <p>Hi neighbors! With the Project Taurus decision coming in April, we built a site that shows what local data centers do and don't report. No sides, just numbers.</p>
+                <a href="#dashboard" class="link-card ad-click">
+                  <svg viewBox="0 0 120 64" aria-hidden="true"><use href="#logo-mark"/></svg>
+                  <span><strong>OpenGrid Springs dashboard</strong><small>What's reported today vs. what could be</small></span>
+                </a>
+              </div>
+              <footer class="post-foot" aria-hidden="true"><span>♡ 24</span><span>💬 9 replies</span><span>↗ Share</span></footer>
+            </article>
+            <div class="feed-ghost" aria-hidden="true"></div>
+          </div>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <svg class="brand-mark" viewBox="0 0 120 64" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <div>
+          <p class="footer-name">OpenGrid Springs</p>
+          <p class="footer-tag">Know the numbers before you decide.</p>
+        </div>
+      </div>
+      <div class="footer-notes">
+        <p>Built with the help of AI. We're for technology, and for knowing what it costs.</p>
+        <p class="footer-small">Class prototype. Example data is clearly labeled.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="ad-transition" id="adTransition" aria-hidden="true"><span>Opening OpenGrid Springs…</span></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
